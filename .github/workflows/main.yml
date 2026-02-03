@@ -29,14 +29,14 @@ jobs:
       - name: Build EXE (PyInstaller)
         shell: pwsh
         run: |
+          cd gcode_checker_github_pack
           pyinstaller --noconfirm --clean --onefile --windowed `
             --name "程式內容檢查工具" `
-            --hidden-import=tkinterdnd2 `
-            --hidden-import=tkinterdnd2.TkinterDnD `
             main.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: gcode_checker_windows_exe
-          path: dist/*.exe
+          path: gcode_checker_github_pack/dist/*.exe
+
